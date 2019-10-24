@@ -2,6 +2,8 @@ package com.example.eva1_10_lista_clima;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -38,6 +40,14 @@ public class MainActivity extends AppCompatActivity implements ListView.OnItemCl
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this, cCiudades[i].getCiudad(), Toast.LENGTH_LONG).show();
+        // Toast.makeText(this, cCiudades[i].getCiudad(), Toast.LENGTH_LONG).show();
+        Intent inDatos = new Intent();
+        String strTemp = Integer.toString(cCiudades[i].getTemp());
+        inDatos.putExtra("ciudad", cCiudades[i].getCiudad());
+        inDatos.putExtra("temp", strTemp);
+        inDatos.putExtra("clima", cCiudades[i].getClima());
+        inDatos.putExtra("img", cCiudades[i].getImagen());
+        setResult(Activity.RESULT_OK, inDatos);
+        finish();
     }
 }

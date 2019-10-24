@@ -1,9 +1,9 @@
-package com.example.eva1_10_lista_clima;
+package com.example.eva2_8_activity_result_lista;
 
 public class Clima {
     private int imagen;
     private String ciudad;
-    private int temp;
+    private double temp;
     private String clima;
 
     public Clima() {
@@ -13,7 +13,7 @@ public class Clima {
         clima = "El infierno";
     }
 
-    public Clima(int imagen, String ciudad, int temp, String clima) {
+    public Clima(int imagen, String ciudad, double temp, String clima) {
         this.imagen = imagen;
         this.ciudad = ciudad;
         this.temp = temp;
@@ -36,11 +36,11 @@ public class Clima {
         this.ciudad = ciudad;
     }
 
-    public int getTemp() {
+    public double getTemp() {
         return temp;
     }
 
-    public void setTemp(int temp) {
+    public void setTemp(double temp) {
         this.temp = temp;
     }
 
