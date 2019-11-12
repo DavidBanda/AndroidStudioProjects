@@ -19,14 +19,15 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView imgV;
     Bitmap imagen = null;
-    Handler handler = new Handler() {
+    Handler handler = new Handler();
+    /*Handler handler = new Handler() {
         @Override
         public void handleMessage(@NonNull Message msg) {
             super.handleMessage(msg);
 
             imgV.setImageBitmap(imagen);
         }
-    };
+    };*/
 
     Thread hilo = new Thread() {
         @Override
@@ -34,8 +35,15 @@ public class MainActivity extends AppCompatActivity {
             super.run();
 
             imagen = cargarImagen("https://i.pinimg.com/originals/84/dd/ee/84ddee6dff0e2af20754826aecbc5c11.jpg");
-            Message msg = handler.obtainMessage();
-            handler.sendMessage(msg);
+            handler.post(rModoficaUI);
+        }
+    };
+
+    Runnable rModoficaUI = new Runnable() {
+        @Override
+        public void run() {
+            //AQUI VA EL TRABAJO DE MODIFICAR LA UI
+            imgV.setImageBitmap(imagen);
         }
     };
 
